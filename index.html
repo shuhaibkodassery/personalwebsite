@@ -8,8 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="myprofile.jpeg" type="image/icon-type">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+    <script src="vadlidation.js"></script>
     <header class="bg-info text-white" style="position: fixed;width:100%;z-index:1;">
         <div class="row">
             <div class="col-md-6 col-9 p-3 pl-5 my-auto">
@@ -130,9 +133,9 @@
 
                 </div>
                 <div class="col-md-4  ">
-                    <div class="card " style="width:18em;border:#918383b4 ;"></div>
+                    <div class="card " style="width:18em; border:#918383b4 ;"></div>
                     <img src="testimonial-bg.jpg" alt="" class="card-img-top "style="height:13em">
-                    <div class="card-body">
+                    <div class="card-body ">
                         <h5 class="card-title text-center">Web Developer</h5>
                             <p class="card-body">I use various web technologies to develop attractive websites which converts visitors to customers.i develop creative and responsive website layouts.</p>
                     </div>
@@ -212,7 +215,7 @@
 
         <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+            <form id="submit-form" name="gform" action="">
 
                 <!--Grid row-->
                 <div class="row">
@@ -263,12 +266,15 @@
                     </div>
                 </div>
                 <!--Grid row-->
+                <div class="text-center text-md-center">
+                         <input type="submit" value="Submit" class="btn btn-success text-dark ">
+                 </div>
 
             </form>
 
             <div class="text-center text-md-center">
-               <a class="btn btn-success text-dark" onclick="document.getElementById('contact-form').submit();">Submit</a>
-              <!-- <a class="btn btn-primary" onclick="validateForm();">Send</a>-->
+              <!--<a class="btn btn-success text-dark" onclick="document.getElementById('gform').submit();" onsubmit="myFunction()">Submit</a>
+                <a class="btn btn-primary" onclick="validateForm();">Send</a>-->
             </div>
             <div class="status"></div>
         </div>
@@ -301,7 +307,7 @@
                 <a href="https://www.facebook.com/shuhaib.sulthan.1" style="text-decoration:none;"><i class="fa-brands fa-square-facebook"></i></a>
                 <a href="https://instagram.com/___shuhaib__malik__?r=nametag" style="text-decoration:none;"><i class="fa-brands fa-square-instagram"></i></a>
                 <a href="http://www.linkedin.com/in/shuhaib-malik" style="text-decoration:none;"><i class="fa-brands fa-linkedin"></i></a>
-               <a href=""><i class="fa-brands fa-square-github"></i></a>
+               <a href="https://github.com/shuhaibkodassery"><i class="fa-brands fa-square-github"></i></a>
                 <a href=""><i class="fa-brands fa-square-twitter"></i></a>
                 
                 <p><b>© 2022 Personal Website All Rights Reserved | Design by SHUHAIB K H</p></b>
@@ -315,7 +321,7 @@
 
 </footer>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/4680c95b45.js" crossorigin="anonymous"></script>
@@ -349,6 +355,34 @@ function validateForm() {
     }
     document.querySelector('.status').innerHTML = "Sending...";
   }
-</script>-->
+</script>
+<script>
+    function myFunction() {
+      alert("The form was submitted");
+    }
+    </script>
+    <script>
+    $('#submit').click(function() {
+        location.reload();
+    });</script>-->
+    <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbwogu2zNB6rcV6AJuqAO3Lr_R9Bpcxa1FVxiNDrxw/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 </body>
 </html>
